@@ -27,11 +27,12 @@ class LineItemsController < ApplicationController
   # POST /line_items.json
   def create
     product = Product.find(params[:product_id])
-    @line_item = @cart.add_product(product.id)
+    @line_item = @cart.add_product(product)
     respond_to do |format|
 
       if @line_item.save
-        format.html { redirect_to @line_item.cart, notice: 'Line item was successfully created.' }
+        format.html { redirect_to store_url }
+        format.js { @current_item = @line_item }
         format.json { render action: 'show', status: :created, location: @line_item }
         session[:counter] = 0
       else
@@ -58,14 +59,15 @@ class LineItemsController < ApplicationController
   # DELETE /line_items/1
   # DELETE /line_items/1.json
   def destroy
-    @line_item.destroy
+    @line_item = LineItem.find(params[:id])
+    @line_item.destroy 
     respond_to do |format|
-      format.html { redirect_to line_items_url }
+      format.html { redirect_to :back, notice: 'Товар был удалён из Вашей корзины'  }
       format.json { head :no_content }
     end
   end
 
-  private
+    private
     # Use callbacks to share common setup or constraints between actions.
     def set_line_item
       @line_item = LineItem.find(params[:id])
