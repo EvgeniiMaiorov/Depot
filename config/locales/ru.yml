@@ -1,0 +1,69 @@
+ru:
+
+  layouts:
+    application:
+      title:     "Электроинструмент"
+      home:      "Домашняя страница"
+      questions: "Вопросы"
+      news:      "Новости"
+      contact:   "Контакты"
+
+  store:
+    index:
+      title_html: "Каталог электроинструмента"
+      add_html:   "Добавить в корзину"
+
+  carts:
+    cart:
+      title:    "Ваша корзина"
+      empty:    "Очистить корзину"
+      checkout: "Оформить заказ"
+
+  number:
+    currency:
+      format:
+        unit:      "руб."
+        precision: 2
+        separator: "."
+        delimiter: ","
+        format:    "%n&nbsp;%u"
+
+  orders:
+    new:
+      legend:          "Пожалуйста введите Ваши данные"
+    form:
+      name:            "Имя"
+      address_html:    "Адрес"
+      email:           "E-mail"
+      pay_type:        "Способ оплаты"
+      pay_prompt_html: "Выберите способ оплаты"
+      submit:          "Оформить заказ"
+
+  activerecord:
+    models:
+      order:      "заказа"
+    attributes:
+      order:
+        address:  "Адрес"
+        name:     "Имя"
+        email:    "E-mail"
+        pay_type: "Способ оплаты"
+    errors:
+      messages:
+        inclusion: "- не выбрана форма оплаты"
+        blank:     "- это поле не может быть пустыми"
+
+  errors:
+    template:
+      body:         "Ошибка заполнения в следующих полях:"
+      header: 
+        one:        "1 ошибка мешает сохранению %{model}"
+        other:      "%{count} ошибки мешают сохранению %{model}"
+
+  thanks: "Спасибо за оформление заказа"
+
+
+
+
+  
+    

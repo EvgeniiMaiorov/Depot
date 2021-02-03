@@ -4,20 +4,20 @@
 <% if session[:counter] > 5 %> 
     <p>  Эта страница была просмотренна <%= session[:counter] %>  раз. </p>
 <% end %>
-<h1>Каталог электроинструмента</h1>
+<h1><%= t('.title_html') %></h1>
 <% cache ['store', Product.latest] do %>
     <% @products.each do |product| %>
-    <% cache ['entry', product] do %>
-        <div class="entry">
-            <%= image_tag(product.image_url) %>
-            <h3><%= product.title %></h3>
-            <%= sanitize(product.description) %>
-            <div class="price_line">
-                <span class="price"><%= number_to_currency(product.price) %></span>
-                <%= button_to 'Добавить в корзину', line_items_path(product_id: product),
-                remote: true %>
+        <% cache ['entry', product] do %>
+            <div class="entry">
+                <%= image_tag(product.image_url) %>
+                <h3><%= product.title %></h3>
+                <%= sanitize(product.description) %>
+                <div class="price_line">
+                    <span class="price"><%= number_to_currency(product.price) %></span>
+                
+                    <%= button_to t('.add_html'), line_items_path(product_id: product), remote: true %> 
+                </div>
             </div>
-        </div>
-    <% end %>    
+        <% end %>    
     <% end %>            
 <% end %>    
